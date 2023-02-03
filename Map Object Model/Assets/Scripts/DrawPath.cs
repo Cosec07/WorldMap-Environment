@@ -15,6 +15,7 @@ public class DrawPath : MonoBehaviour
         for (float t = 0; t <= 1; t += 0.05f)
         {
             gizmosPosition = Mathf.Pow(1 - t, 3) * controlPoints[0].localPosition + 3 * Mathf.Pow(1 - t, 2) * t * controlPoints[1].localPosition + 3 * (1 - t) * Mathf.Pow(t, 2) * controlPoints[2].localPosition + Mathf.Pow(t, 3) * controlPoints[3].localPosition;
+            Gizmos.color = Color.black;
             Gizmos.DrawSphere(gizmosPosition, size);
         }
 
