@@ -1,0 +1,11 @@
+Model Information:
+* title:	HD Earth
+* source:	https://sketchfab.com/3d-models/hd-earth-f3134609078c4719a943cfe77a7af6f6
+* author:	klaus018579 (https://sketchfab.com/klaus018579)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "HD Earth" (https://sketchfab.com/3d-models/hd-earth-f3134609078c4719a943cfe77a7af6f6) by klaus018579 (https://sketchfab.com/klaus018579) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

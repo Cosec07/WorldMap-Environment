@@ -1,0 +1,11 @@
+Model Information:
+* title:	2D World Map With Countries
+* source:	https://sketchfab.com/3d-models/2d-world-map-with-countries-74192acdc7a949f8bdae478d5da3ac6c
+* author:	ercandinsel (https://sketchfab.com/ercandinsel)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "2D World Map With Countries" (https://sketchfab.com/3d-models/2d-world-map-with-countries-74192acdc7a949f8bdae478d5da3ac6c) by ercandinsel (https://sketchfab.com/ercandinsel) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
