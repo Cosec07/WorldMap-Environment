@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Continent
+  - wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Whale
   - Water
   - UI
   - 

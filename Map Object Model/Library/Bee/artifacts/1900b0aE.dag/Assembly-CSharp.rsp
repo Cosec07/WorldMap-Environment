@@ -353,6 +353,9 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/BoatAgent.cs"
+"Assets/Scripts/DrawPath.cs"
+"Assets/Scripts/FollowPath.cs"
 "Assets/Sketchfab For Unity/Scripts/AssetBrowser/SketchfabBrowserManager.cs"
 "Assets/Sketchfab For Unity/Scripts/AssetBrowser/SketchfabBrowserWindow.cs"
 "Assets/Sketchfab For Unity/Scripts/AssetBrowser/SketchfabModelWindow.cs"
@@ -364,6 +367,7 @@
 "Assets/Sketchfab For Unity/Scripts/SketchfabLogger.cs"
 "Assets/Sketchfab For Unity/Scripts/SketchfabPlugin.cs"
 "Assets/Sketchfab For Unity/Scripts/SketchfabUI.cs"
+"Assets/Waypoint.cs"
 -langversion:9.0
 
 /deterministic
