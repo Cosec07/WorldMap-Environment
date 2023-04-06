@@ -353,6 +353,7 @@
 "Assets/BoatAgent.cs"
 "Assets/Scripts/DrawPath.cs"
 "Assets/Scripts/FollowPath.cs"
+"Assets/Scripts/PointMapper.cs"
 "Assets/Waypoint.cs"
 -langversion:9.0
 
