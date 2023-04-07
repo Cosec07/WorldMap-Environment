@@ -122,10 +122,20 @@
 -define:MODULE_PARTICLE_SYSTEM_EXISTS
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.barracuda@3.0.0/Barracuda/Runtime/Plugins/ProtoBuffer/Google.Protobuf.dll"
+-r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll"
+-r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Mdb.dll"
+-r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll"
+-r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll"
+-r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.Unsafe.dll"
 -r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.collab-proxy@1.17.7/Lib/Editor/PlasticSCM/log4netPlastic.dll"
 -r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.collab-proxy@1.17.7/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll"
 -r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.collab-proxy@1.17.7/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll"
 -r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.collab-proxy@1.17.7/Lib/Editor/PlasticSCM/unityplastic.dll"
+-r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.ml-agents@89a6357016/Plugins/ProtoBuffer/Grpc.Core.dll"
+-r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.ml-agents@89a6357016/Plugins/ProtoBuffer/System.Interactive.Async.dll"
+-r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.ml-agents@89a6357016/Plugins/System.IO.Abstractions.dll"
+-r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.ml-agents@89a6357016/Plugins/System.IO.Abstractions.TestingHelpers.dll"
 -r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll"
 -r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.testtools.codecoverage@1.2.2/lib/ReportGenerator/ReportGeneratorMerged.dll"
 -r:"C:/KART/WorldMap-Environment/Map Object Model/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll"

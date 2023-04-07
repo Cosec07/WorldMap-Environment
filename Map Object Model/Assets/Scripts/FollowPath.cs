@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowPath : MonoBehaviour
@@ -10,17 +9,19 @@ public class FollowPath : MonoBehaviour
     private Vector3 objectPosition;
     private float speedModifier;
     private bool coroutineAllowed;
+    private bool increaseSpeed;
+    private int frame;
 
-    // Start is called before the first frame update
     void Start()
     {
         routeToGo = 0;
         tParam = 0f;
-        speedModifier = 0.1f;
+        speedModifier = 0.01f;
         coroutineAllowed = true;
+        increaseSpeed = true;
+        frame = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (coroutineAllowed)
@@ -40,17 +41,29 @@ public class FollowPath : MonoBehaviour
 
         while (tParam <= 1)
         {
-            tParam += Time.deltaTime * speedModifier;
-            //tParam += 0.005f;
-            objectPosition = Mathf.Pow(1 - tParam, 3) * p0 + 3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 + 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 + Mathf.Pow(tParam, 3) * p3;
-            
-            transform.localPosition = new Vector3(objectPosition.x, 0.35f, objectPosition.z);
-            
+            frame++;
+            if (frame >= 1)
+            {
+                frame = 0;
+                if (increaseSpeed)
+                {
+                    speedModifier += 0.01f;
+                }
+                else
+                {
+                    speedModifier -= 0.01f;
+                }
+                increaseSpeed = !increaseSpeed;
+            }
 
-            
+            tParam += Time.deltaTime * speedModifier;
+            objectPosition = Mathf.Pow(1 - tParam, 3) * p0 + 3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 + 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 + Mathf.Pow(tParam, 3) * p3;
+
+            transform.localPosition = new Vector3(objectPosition.x, 0.35f, objectPosition.z);
+
             yield return new WaitForEndOfFrame();
         }
-        //transform.parent.transform.LookAt(position);
+
         tParam = 0f;
 
         routeToGo += 1;
@@ -61,7 +74,5 @@ public class FollowPath : MonoBehaviour
         }
 
         coroutineAllowed = true;
-
     }
-
 }

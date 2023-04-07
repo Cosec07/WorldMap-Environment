@@ -1,25 +1,26 @@
 using UnityEngine;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 
 public class PointMapper : MonoBehaviour
 {
-    public string csvFilePath = "Assets/Data/Dataset.csv";      // Path to the CSV file
-    //public char delimiter = ',';          // CSV file delimiter
-    public float scale;             // Scale of the points
-    public Material pointMaterial;  // Material for the points
+    public GameObject worldMap;
+    public GameObject whale;
 
-    private HashSet<Vector2> latLongSet;   // HashSet to store unique lat-long pairs
-    private List<Vector3> worldCoordinates;  // List to store world coordinates
+    private List<Vector3> points;
+    private float worldMapWidth;
+    private float worldMapHeight;
+    private float latitudeScale;
+    private float longitudeScale;
 
     void Start()
     {
-        // Initialize the HashSet and the List
-        latLongSet = new HashSet<Vector2>();
-        worldCoordinates = new List<Vector3>();
+        points = new List<Vector3>();
 
-        // Read the CSV file and convert the lat-long pairs to world coordinates
-        using (StreamReader reader = new StreamReader(csvFilePath))
+        // Load CSV file
+        string filePath = Application.dataPath + "/Data/Dataset.csv";
+        //string[] lines = File.ReadAllLines(filePath);
+        using (StreamReader reader = new StreamReader(filePath))
         {
             reader.ReadLine();
             while (!reader.EndOfStream)
@@ -33,53 +34,75 @@ public class PointMapper : MonoBehaviour
                 else
                 {
                     float lat = float.Parse(values[3]);
-                    float lon = float.Parse(values[4]);
-                    Vector2 latLong = new Vector2(lat, lon);
-                    if (latLongSet.Add(latLong))
-                    {
-                        Vector3 worldCoord = LatLongToWorldCoord(latLong);
-                        worldCoordinates.Add(worldCoord);
-                    }
-                }
+                    float lon= float.Parse(values[4]);
+                    Vector3 point = ProjectLatLongToMap(lat,lon);
+                    points.Add(point);
+                }   
             }
         }
 
-        // Create a mesh to hold the points
-        Mesh mesh = new Mesh();
-        mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
-        mesh.vertices = worldCoordinates.ToArray();
-        int[] indices = new int[worldCoordinates.Count];
-        for (int i = 0; i < worldCoordinates.Count; i++)
+            // Parse CSV data
+            /*   for (int i = 0; i < lines.Length; i++)
+               {
+
+                   string[] fields = lines[i].Split(',');
+                   float longitude = float.Parse(fields[3]);
+                   float latitude = float.Parse(fields[4]);
+                   Vector3 point = ProjectLatLongToMap(longitude, latitude);
+
+                   points.Add(point);
+               } */
+
+            // Set line renderer positions
+            LineRenderer lineRenderer = worldMap.GetComponent<LineRenderer>();
+        lineRenderer.positionCount = points.Count;
+        
+
+        for (int i = 0; i < points.Count; i++)
         {
-            indices[i] = i;
+            lineRenderer.SetPosition(i, points[i]);
         }
-        mesh.SetIndices(indices, MeshTopology.Points, 0);
-        mesh.RecalculateBounds();
-        mesh.RecalculateNormals();
-
-        // Create a GameObject to hold the mesh
-        GameObject pointCloud = new GameObject("PointCloud");
-        pointCloud.transform.localScale = new Vector3(scale, scale, scale);
-        pointCloud.transform.SetParent(transform);
-
-        // Add a MeshFilter and MeshRenderer to the GameObject
-        MeshFilter meshFilter = pointCloud.AddComponent<MeshFilter>();
-        meshFilter.mesh = mesh;
-        MeshRenderer meshRenderer = pointCloud.AddComponent<MeshRenderer>();
-        meshRenderer.material = pointMaterial;
+        //DrawPath(lineRenderer);
+        // Set initial position of whale
+        whale.transform.position = points[0];
     }
 
-    void Update()
+    Vector3 ProjectLatLongToMap(float longitude, float latitude)
     {
-        // Rotate the point cloud around the Y-axis
-        transform.Rotate(Vector3.up, Time.deltaTime * 10f);
-    }
+        float x = (longitude + 180f) * (worldMapWidth / 360f);
+        float y = (latitude + 90f) * (worldMapHeight / 180f);
 
-    private Vector3 LatLongToWorldCoord(Vector2 latLong)
+        return new Vector3(x, 1f, y);
+    }
+    /*void DrawPath(LineRenderer lineRenderer)
     {
-        // Convert the lat-long pair to a world coordinate using the Mercator projection
-        float x = (latLong.y + 180f) / 360f;
-        float y = Mathf.Log(Mathf.Tan((latLong.x + 90f) * Mathf.Deg2Rad / 2f)) / Mathf.PI + 0.5f;
-        return new Vector3(x, y, 0f);
+        // Set the line width
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
+
+        // Set the number of points to draw
+        lineRenderer.positionCount = points.Count;
+
+        // Loop through the path points and set the positions of the line renderer
+        for (int i = 0; i < points.Count; i++)
+        {
+            // Convert the lat-long to world coordinates using the world map's scale and position
+            Vector3 worldPoint = new Vector3(points[i].y / 180f * worldMap.transform.localScale.x - worldMap.transform.position.x, 0f, points[i].x / 90f * worldMap.transform.localScale.y - worldMap.transform.position.z);
+            lineRenderer.SetPosition(i, worldPoint);
+        }
+    } */
+    void Awake()
+    {
+        // Get dimensions of world map
+        Renderer worldMapRenderer = worldMap.GetComponent<Renderer>();
+        worldMapWidth = 60f;
+        worldMapHeight = 50f;
+        //worldMapWidth = worldMapRenderer.bounds.size.x;
+        //worldMapHeight = worldMapRenderer.bounds.size.y;
+        
+
+        // Calculate scaling factors for latitude and longitude
+        latitudeScale = worldMapHeight / 180f;
+        longitudeScale = worldMapWidth / 360f;
     }
 }
